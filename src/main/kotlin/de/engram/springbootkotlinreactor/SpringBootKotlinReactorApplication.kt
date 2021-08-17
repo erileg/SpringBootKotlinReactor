@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.MediaType.APPLICATION_JSON
 import org.springframework.web.reactive.function.server.coRouter
 
 @SpringBootApplication
@@ -17,7 +18,9 @@ fun main(args: Array<String>) {
 class RouterConfiguration {
     @Bean
     fun routes(requestHandler: RequestHandler) = coRouter {
-        GET("/", requestHandler::root)
-        GET("/hello", requestHandler::hello)
+		accept(APPLICATION_JSON).nest {
+			GET("/", requestHandler::root)
+			GET("/hello", requestHandler::hello)
+		}
     }
 }
