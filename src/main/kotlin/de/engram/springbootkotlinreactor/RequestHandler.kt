@@ -6,7 +6,6 @@ import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.ServerResponse.ok
 import org.springframework.web.reactive.function.server.bodyAndAwait
 import org.springframework.web.reactive.function.server.bodyValueAndAwait
-import reactor.core.publisher.Mono
 
 @Component
 @Suppress("UNUSED_PARAMETER")
@@ -20,14 +19,15 @@ class RequestHandler(
 
     suspend fun hello(request: ServerRequest): ServerResponse {
         val payload = setOf(
-            Thing("name1", "value1"),
-            Thing("name2", "value2")
+            Thing("key1", "value1 -> 💩"),
+            Thing("key2", "value2 -> 🤡"),
+            Thing("key2", "value2 -> 👁")
         )
 
         return ok().bodyValueAndAwait(payload)
     }
 
-    suspend fun all(request: ServerRequest): ServerResponse {
+    suspend fun allThings(request: ServerRequest): ServerResponse {
         return ok().bodyAndAwait(thingRepository.findAll())
 	}
 }

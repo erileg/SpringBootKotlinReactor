@@ -21,6 +21,7 @@ class RouterConfiguration {
 		accept(APPLICATION_JSON).nest {
 			GET("/", requestHandler::root)
 			GET("/hello", requestHandler::hello)
+			GET("/things", requestHandler::allThings)
 		}
     }
 }
