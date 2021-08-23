@@ -3,12 +3,16 @@ db:
   username: reactive
   password: reactive
 
+logging:
+  level:
+    org.flywaydb: INFO
+
 spring:
-    r2dbc:
-        url: r2dbc:${db.url}
-        username: ${db.username}
-        password: ${db.password}
-    flyway:
-        url: jdbc:${db.url}
-        user: ${db.username}
-        password: ${db.password}
+  r2dbc:
+    url: r2dbc:${db.url}
+    username: ${db.username}
+    password: ${db.password}
+  flyway:
+    url: jdbc:${db.url}
+    user: ${db.username}
+    password: ${db.password}
