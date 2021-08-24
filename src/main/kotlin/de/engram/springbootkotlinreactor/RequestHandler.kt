@@ -9,9 +9,8 @@ import org.springframework.web.reactive.function.server.ServerResponse.ok
 
 @RestController
 @Suppress("UNUSED_PARAMETER")
-class RequestHandler(
-	val thingRepository: ThingRepository
-) {
+class RequestHandler(val thingRepository: ThingRepository) {
+
 	suspend fun root(request: ServerRequest) =
 		ok().bodyValueAndAwait("Up and running...")
 
@@ -33,6 +32,6 @@ class RequestHandler(
 	}
 
 	@GetMapping("/search")
-	suspend fun search(@RequestParam(value="needle") needle:String) =
+	suspend fun search(@RequestParam(value = "needle") needle: String) =
 		thingRepository.searchByValueContaining(needle)
 }
