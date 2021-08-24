@@ -1,11 +1,13 @@
 package de.engram.springbootkotlinreactor
 
-import org.springframework.stereotype.Component
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.reactive.function.server.*
 import org.springframework.web.reactive.function.server.ServerResponse.notFound
 import org.springframework.web.reactive.function.server.ServerResponse.ok
 
-@Component
+@RestController
 @Suppress("UNUSED_PARAMETER")
 class RequestHandler(
 	val thingRepository: ThingRepository
@@ -29,4 +31,8 @@ class RequestHandler(
 		val thing = thingRepository.findById(request.pathVariable("key"))
 		return thing?.let { ok().bodyValueAndAwait(it) } ?: notFound().buildAndAwait()
 	}
+
+	@GetMapping("/search")
+	suspend fun search(@RequestParam(value="needle") needle:String) =
+		thingRepository.searchByValueContaining(needle)
 }
