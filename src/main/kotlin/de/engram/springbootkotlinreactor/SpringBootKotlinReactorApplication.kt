@@ -22,6 +22,7 @@ class RouterConfiguration {
 			GET("/", requestHandler::root)
 			GET("/hello", requestHandler::hello)
 			GET("/things", requestHandler::allThings)
+			GET("/things/{key}", requestHandler::findByKey)
 		}
     }
 }
