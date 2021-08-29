@@ -7,13 +7,16 @@ import org.springframework.web.reactive.function.server.coRouter
 
 @Configuration
 class RouterConfiguration {
-    @Bean
-    fun routes(requestHandler: RequestHandler) = coRouter {
-        accept(MediaType.APPLICATION_JSON).nest {
-            GET("/", requestHandler::root)
-            GET("/hello", requestHandler::hello)
-            GET("/things", requestHandler::allThings)
-            GET("/things/{key}", requestHandler::findByKey)
-        }
-    }
+	@Bean
+	fun routes(requestHandler: RequestHandler) = coRouter {
+		accept(MediaType.TEXT_PLAIN).nest {
+			GET("/", requestHandler::root)
+		}
+		accept(MediaType.APPLICATION_JSON).nest {
+			GET("/hello", requestHandler::hello)
+			GET("/things", queryParam("needle") { true }, requestHandler::search)
+			GET("/things", requestHandler::allThings)
+			GET("/things/{key}", requestHandler::findByKey)
+		}
+	}
 }

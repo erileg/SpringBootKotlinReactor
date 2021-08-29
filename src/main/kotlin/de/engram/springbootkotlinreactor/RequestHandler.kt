@@ -1,7 +1,5 @@
 package de.engram.springbootkotlinreactor
 
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.reactive.function.server.*
 import org.springframework.web.reactive.function.server.ServerResponse.notFound
@@ -31,7 +29,8 @@ class RequestHandler(val thingRepository: ThingRepository) {
 		return thing?.let { ok().bodyValueAndAwait(it) } ?: notFound().buildAndAwait()
 	}
 
-	@GetMapping("/search")
-	suspend fun search(@RequestParam(value = "needle") needle: String) =
-		thingRepository.searchByValueContaining(needle)
+	suspend fun search(request: ServerRequest): ServerResponse {
+		val thing = request.queryParamOrNull("needle")?.let { thingRepository.searchByValueContaining(it) }
+		return thing?.let { ok().bodyValueAndAwait(it) } ?: notFound().buildAndAwait()
+	}
 }
