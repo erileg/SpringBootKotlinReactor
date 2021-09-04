@@ -1,9 +1,8 @@
-CREATE TABLE IF NOT EXISTS `thing` (
-  `key` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
-  `value` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
-  PRIMARY KEY (`key`)
+CREATE TABLE IF NOT EXISTS `post` (
+  `id` MEDIUMINT NOT NULL AUTO_INCREMENT,
+  `version` MEDIUMINT NOT NULL,
+  `content` varchar(4096) NULL,
+  `user_name` varchar(255) NULL,
+  `timestamp` timestamp NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `reactive`.`thing` (`key`, `value`) VALUES ('key1', 'value1 💩');
-INSERT INTO `reactive`.`thing` (`key`, `value`) VALUES ('key2', 'value2 👻');
-INSERT INTO `reactive`.`thing` (`key`, `value`) VALUES ('key3', 'value3 👀');

@@ -4,6 +4,6 @@ import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface ThingRepository: CoroutineCrudRepository<Thing, String> {
-	suspend fun searchByValueContaining(needle: String): List<Thing>
+interface PostRepository: CoroutineCrudRepository<Post, String> {
+	suspend fun searchByContentContaining(needle: String): List<Post>
 }
