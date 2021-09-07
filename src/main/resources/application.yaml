@@ -19,3 +19,10 @@ spring:
         url: jdbc:${db.url}
         user: ${db.username}
         password: ${db.password}
+
+keycloak:
+    auth-server-url: http://localhost:8090/auth
+    realm: demo
+    resource: sbkr
+    public-client: true
+    principal-attribute: preferred_username

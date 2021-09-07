@@ -12,15 +12,12 @@ class RequestHandler(val postRepository: PostRepository) {
 	suspend fun root(request: ServerRequest) =
 		ok().bodyValueAndAwait("Up and running...")
 
-	suspend fun hello(request: ServerRequest): ServerResponse {
-		return ok().bodyValueAndAwait(
-			setOf(
-				Post(content = "hello 🐷", userName = "user1"),
-				Post(content = "hello 🤡", userName = "user2"),
-				Post(content = "hello 👁", userName = "user3")
-			)
+	suspend fun hello(request: ServerRequest): ServerResponse =
+		ok().bodyValueAndAwait(
+			request.awaitPrincipal()
+				?.let { ok().bodyValueAndAwait("Hello ${it.name}") }
+				?: notFound().buildAndAwait()
 		)
-	}
 
 	suspend fun allPosts(request: ServerRequest) =
 		ok().bodyAndAwait(postRepository.findAll())
