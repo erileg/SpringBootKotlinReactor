@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.5.4"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	kotlin("jvm") version "1.5.21"
-	kotlin("plugin.spring") version "1.5.21"
+	kotlin("jvm") version "1.5.30"
+	kotlin("plugin.spring") version "1.5.30"
 }
 
 group = "de.engram"
@@ -30,7 +30,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.keycloak:keycloak-spring-boot-starter:15.0.2")
 	implementation("org.keycloak.bom:keycloak-adapter-bom:15.0.2")
-	implementation ("io.github.microutils:kotlin-logging:1.12.5")
+	implementation ("io.github.microutils:kotlin-logging:2.0.11")
 	runtimeOnly("org.mariadb:r2dbc-mariadb")
 	runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
