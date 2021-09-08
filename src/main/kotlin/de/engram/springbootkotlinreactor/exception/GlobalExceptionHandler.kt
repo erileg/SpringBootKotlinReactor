@@ -1,4 +1,4 @@
-package de.engram.springbootkotlinreactor
+package de.engram.springbootkotlinreactor.exception
 
 import org.springframework.beans.TypeMismatchException
 import org.springframework.http.HttpStatus

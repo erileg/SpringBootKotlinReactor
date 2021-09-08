@@ -1,4 +1,4 @@
-package de.engram.springbootkotlinreactor
+package de.engram.springbootkotlinreactor.domain
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.Version

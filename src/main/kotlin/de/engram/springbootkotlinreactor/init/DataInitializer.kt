@@ -1,5 +1,7 @@
-package de.engram.springbootkotlinreactor
+package de.engram.springbootkotlinreactor.init
 
+import de.engram.springbootkotlinreactor.domain.Post
+import de.engram.springbootkotlinreactor.repository.PostRepository
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 import org.springframework.boot.ApplicationArguments

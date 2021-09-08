@@ -1,11 +1,12 @@
-package de.engram.springbootkotlinreactor
+package de.engram.springbootkotlinreactor.handler
 
-import org.springframework.web.bind.annotation.RestController
+import de.engram.springbootkotlinreactor.repository.PostRepository
+import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.*
 import org.springframework.web.reactive.function.server.ServerResponse.*
 import java.net.URI
 
-@RestController
+@Component
 @Suppress("UNUSED_PARAMETER")
 class RequestHandler(val postRepository: PostRepository) {
 

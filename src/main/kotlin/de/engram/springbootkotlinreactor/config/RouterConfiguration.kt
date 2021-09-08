@@ -1,5 +1,6 @@
-package de.engram.springbootkotlinreactor
+package de.engram.springbootkotlinreactor.config
 
+import de.engram.springbootkotlinreactor.handler.RequestHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.MediaType
